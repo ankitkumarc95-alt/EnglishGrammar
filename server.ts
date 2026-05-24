@@ -9,7 +9,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const PORT = 3000;
+// Port dynamic rakho
+const port = Number(process.env.PORT) || 3000;
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 // Initialize GoogleGenAI client (server-side only)
 const ai = new GoogleGenAI({
